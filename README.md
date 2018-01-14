@@ -7,3 +7,4 @@ The cookbook assembles information
 1. All About SSH Keys
 	1. [SSH Key Access](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/SSH%20Key%20Access.md)
 	1. 
+1. [Permissions and User Management](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/Permissions%20and%20User%20Management.md)
