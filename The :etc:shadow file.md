@@ -56,3 +56,4 @@ You must be root to change passwords
 # passwd userNameHere
 ```
 
+Reference: https://www.cyberciti.biz/faq/understanding-etcshadow-file/

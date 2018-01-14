@@ -17,4 +17,4 @@ The seven fields as follows. Generally, passwd file entry looks as follows (clic
 * Home directory: The absolute path to the directory the user will be in when they log in. If this directory does not exists then users directory becomes `/`
 * Command/shell: The absolute path of a command or shell (/bin/bash). Typically, this is a shell. Please note that it does not have to be a shell.
 
-
+Reference: https://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/
