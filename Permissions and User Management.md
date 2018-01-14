@@ -111,8 +111,7 @@ We can find a list of users created in the /etc/passwd file:
 ```shell
 $ vim /etc/passwd
 ```
-![Image of /etc/passwd]
-(../images/etc.passwd.png)
+![Image of /etc/passwd](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/images/etc.passwd.png)
 
 This will show us the following information in colon-separated columns: 
 * User
