@@ -1,4 +1,4 @@
-### Permissions and User Management
+# Permissions and User Management
 
 ## Permissions
 For every directory and file, there are permissions that can be set informing what users can perform operations on them, as well as what operations those users can take.  
@@ -57,7 +57,7 @@ Next, let's analyze -rw-r-xr--:
 * `r-x` : group members can read the file or execute it
 * `r--` : others can only read the file
 
-##Changing Permissions
+## Changing Permissions
 We can change a file or directory permissions with the `chmod` command.  
 Here's some chmod information and a breakdown:  
 
