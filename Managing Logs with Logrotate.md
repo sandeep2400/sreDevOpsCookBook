@@ -10,11 +10,21 @@ Logrotate helps to manage your log files. It can periodically **read**, **minimi
 
 Many apps setup Logrotate for you. For instance, installing Apache in Ubuntu adds the file /etc/logrotate.d/apache2, which is a configuration files used by Logrotate to rotate all apache access and error logs.
 
+## Installing Logrotate
+```shell
+sudo apt-get install logrotate
+```
+
 ## Configuring Logrotate
 In stock Ubuntu, any config file you put into /etc/logrotate.d is going to **run once per day**. Logs are typically rotated once per day or less (Apache default in Ubuntu is in fact weekly).
 
+**Application-specific log file**  information (to override the defaults) are kept at:
+```shell
+/etc/logrotate.d/
+```
+
 ## Default Apache
-Let's look over Apache's default in Ubuntu - /etc/logrotate.d/apache2.  
+Let's look over Apache's default in Ubuntu - `/etc/logrotate.d/apache2.`  
 
 ```shell
 /var/log/apache2/*.log {
@@ -40,21 +50,21 @@ Let's look over Apache's default in Ubuntu - /etc/logrotate.d/apache2.
 This will rotate any files in `/var/log/apache2` that end in `".log"`. This is why, when we create a new Apache virtual host, we typically put the logs in `/var/log/apache2`. Logrotate will automatically manage the log files!  
 Let's go through the options.
 
-* weekly: Rotate logs once per week. Available options are daily, weekly, monthly, and yearly.
-* missingok: If no `*.log` files are found, don't freak out.
-* rotate 52: Keep 52 files before deleting old log files (Thats a default of 52 weeks, or one years worth of logs!)
-* compress: Compress (gzip) log files
-* delaycompress: Delays compression until 2nd time around rotating. As a result, you'll have one current log, one older log which remains uncompressed, and then a series of compressed logs. More info on its specifics.
-* compresscmd: Set which command to used to compress. Defaults to gzip.
-* uncompresscmd: Set the command to use to uncompress. Defaults to gunzip.
-* notifempty: Don't rotate empty files
-* create 640 root adm: Create new log files with set permissions/owner/group, This example creates file with user root and group adm. In many systems, it will be root for owner and group.
-* sharedscripts: Run postrotate script after all logs are rotated. If this is not set, it will run postrotate after each matching file is rotated.
-* postrotate: Scripts to run after rotating is done. In this case, Apache is reloaded so it writes to the newly created log files. Reloading Apache (gracefully) lets any current connection finish before reloading and setting the new log file to be written to.
-* prerotate: Run before log rotating begins
+* `weekly`: Rotate logs once per week. Available options are daily, weekly, monthly, and yearly.
+* `missingok`: If no `*.log` files are found, don't freak out.
+* `rotate 52`: Keep 52 files before deleting old log files (Thats a default of 52 weeks, or one years worth of logs!)
+* `compress`: Compress (gzip) log files
+* `delaycompress`: Delays compression until 2nd time around rotating. As a result, you'll have one current log, one older log which remains uncompressed, and then a series of compressed logs. More info on its specifics.
+* `compresscmd`: Set which command to used to compress. Defaults to gzip.
+* `uncompresscmd`: Set the command to use to uncompress. Defaults to gunzip.
+* `notifempty`: Don't rotate empty files
+* `create 640 root adm`: Create new log files with set permissions/owner/group, This example creates file with user root and group adm. In many systems, it will be root for owner and group.
+* `sharedscripts`: Run postrotate script after all logs are rotated. If this is not set, it will run postrotate after each matching file is rotated.
+* `postrotate`: Scripts to run after rotating is done. In this case, Apache is reloaded so it writes to the newly created log files. Reloading Apache (gracefully) lets any current connection finish before reloading and setting the new log file to be written to.
+* `prerotate`: Run before log rotating begins
 * Note: There are more options. Check them out [here](http://linuxcommand.org/man_pages/logrotate8.html).  
 
-Here's what I have for a PHP application in production, which uses Mongolog to create log files in addition to the default Apache logger.
+Here's what the author has for a PHP application in production, which uses Mongolog to create log files in addition to the default Apache logger.
 
 ```shell
 /var/www/my-app/application/logs/*.log {
@@ -81,12 +91,12 @@ Here's what I have for a PHP application in production, which uses Mongolog to c
 ```  
 Note that we specify the directory where the log files are written to from the application. The other items to note in the above Logrotate configuration:
 
-* daily: This writes daily, since we expect a decent amount of traffic.
-* rotate 7: Keep only the last 7 days of logs in the server.
-* create 660 appuser www-data: New log files are owned by appuser, which is and example username of the user used to deploy files to the server. The log files are in group www-data, the same group that Apache typically runs as. The permissions (660) allow both owner and users of the same group to write to the file (appuser and Apache user www-data can then write to and edit these files). This let's the PHP app write to the log files!
-* dateext: Logs by default get a number appended to their filename. This option appends a date instead.
+* `daily`: This writes daily, since we expect a decent amount of traffic.
+* `rotate 7`: Keep only the last 7 days of logs in the server.
+* `create 660 appuser www-data`: New log files are owned by appuser, which is and example username of the user used to deploy files to the server. The log files are in group www-data, the same group that Apache typically runs as. The permissions (660) allow both owner and users of the same group to write to the file (appuser and Apache user www-data can then write to and edit these files). This let's the PHP app write to the log files!
+* `dateext`: Logs by default get a number appended to their filename. This option appends a date instead.
     * dateformat: The format of the date appended to the log filename you want. These logs also add web01, web02 (and so on) to the log file name so we know which webserver the log came from. This is recommended if you are [logging on multiple web servers behind a load balancer](http://fideloper.com/web-app-load-balancing) and will combine the logs at a later date.
-* postrotate: Note that I'm saving log files to Amazon S3 using the s3cmd CLI tool. Using 'sync' is similar to rsync - It will overwrite files in S3 with newer files. This is especially why differentiating log file names between web01, web02, etc is necessary. This is some magic right here - Both giving you off-site backups to your log files, and not taking up unnecessary server space.
+* `postrotate`: Note that I'm saving log files to Amazon S3 using the s3cmd CLI tool. Using 'sync' is similar to rsync - It will overwrite files in S3 with newer files. This is especially why differentiating log file names between web01, web02, etc is necessary. This is some magic right here - Both giving you off-site backups to your log files, and not taking up unnecessary server space.
 
 ## Resources
 * Note that two important and/or useful items in this article: Creating the log files with the correct permissions and saving log files to Amazon S3 for off-site backup.
@@ -97,8 +107,27 @@ Note the example on how to upload log files to Amazon S3 automatically when each
 
 Not explicitly stated is that Logrotate runs on a **daily cron job**. Usually you can find the logrotate script run at `/etc/cron.daily/logrotate`. Many OSes come with scripts which can be run regularly, simply by being placed in the correct directory, such as `/etc/cron.hourly`, `/etc/cron.daily`, `/etc/cron.weekly` and `/etc/cron.monthly`.
 
+## Status Check and Verification
+To verify if a particular log is indeed rotating or not and to check the last date and time of its rotation, check the `/var/lib/logrotate/status` file. This is a neatly formatted file that contains the log file name and the date on which it was last rotated.
+
+```shell
+cat /var/lib/logrotate/status 
+```
+A few entries from this file, for example:
+```shell
+"/var/log/lpr.log" 2013-4-11
+"/var/log/dpkg.log" 2013-4-11
+"/var/log/pm-suspend.log" 2013-4-11
+"/var/log/syslog" 2013-4-11
+"/var/log/mail.info" 2013-4-11
+"/var/log/daemon.log" 2013-4-11
+"/var/log/apport.log" 2013-4-11
+```
+
 ### Here are some more resources:
 * [Log Rotate Explanation from Rackspace](http://www.rackspace.com/knowledge_center/article/understanding-logrotate-part-1)
 * [Digital Ocean on Logrotate for Ubuntu](https://www.digitalocean.com/community/articles/how-to-manage-log-files-with-logrotate-on-ubuntu-12-10)
 * [Run Logrotate manually](http://stackoverflow.com/questions/2117771/is-it-possible-to-run-one-logrotate-check-manually) instead of via CRON
 * Finally, [Log Resources for Distributed Environments](http://fideloper.com/web-app-load-balancing) (scroll to the bottom)
+
+Reference: https://serversforhackers.com/c/managing-logs-with-logrotate

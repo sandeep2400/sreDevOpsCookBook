@@ -36,13 +36,8 @@ If you read the previous newsletter on Apache virtual hosts, you may have notice
 Here are some simple examples of examining some Apache (or Nginx!) log files.  
 Some of the command line tools available for things like are `grep`, `zgrep`, `awk`, `cut`, `sed`, `sort`, `uniq`, `head` and others. 
 
-For more command-line tricks:
-
-Analyzing Apache log files
-Sed and Awk examples
-More Advanced Analysis and Tooling
-As you might imagine, there are LOTS of tools available to analyze and store logs. This becomes especially important if you have a multiple-server environment, each of which may be generating it's own collection of logs.
-
+## More Advanced Analysis and Tooling
+As you might imagine, there are LOTS of tools available to analyze and store logs. This becomes especially important if you have a multiple-server environment, each of which may be generating it's own collection of logs.  
 In situations like this, a common strategy is to combine log files to a central storage. This usually comes with a bonus of being both searchable and more easily analyzed.
 
 ## Here's a list of some available logging tools:
@@ -65,3 +60,5 @@ In situations like this, a common strategy is to combine log files to a central 
 Here's an interesting idea on logging: Fingers Crossed logging is the idea of only saving logs which are near errors. If logs do not appear near errors, they are (eventually) discarded.  
 For PHP readers, Monolog has a ton of handlers which may clue you into other services or ideas on how to handle logging.  
 For AWS users, Elastic Load Balancers will finally have Access logs and other data available!  
+
+Reference: https://serversforhackers.com/c/all-about-logs
