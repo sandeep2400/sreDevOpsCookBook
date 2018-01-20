@@ -12,3 +12,6 @@ The cookbook assembles information
 	1. [/etc/group file](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/The%20:etc:group%20file.md)
 1. IPTables
 	1. [Basics of IPTables](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/Basics%20of%20IPTables.md) 
+1. Logging
+	1. [Logging Basics](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/Logging%20Basics.md)
+	1. [Managing Logs with LogRotate](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/Managing%20Logs%20with%20Logrotate.md)
