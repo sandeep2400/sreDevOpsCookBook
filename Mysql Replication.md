@@ -1,4 +1,4 @@
-#Mysql Replication
+# Mysql Replication
 
 ## Configure the master Server
 * Edit the my.cnf file. In Ubuntu the my.cnf file is located at /etc/mysql/my.cnf
