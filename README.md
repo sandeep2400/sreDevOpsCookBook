@@ -16,6 +16,7 @@ The cookbook assembles information
 	1. [Logging Basics](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/Logging%20Basics.md)
 	1. [Managing Logs with LogRotate](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/Managing%20Logs%20with%20Logrotate.md)
 1. MYSQL
+	1. [Mysql Installation](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/Installing%20Mysql.md)
 	1. [Set up](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/MySQL%20Set%20up.md)
 	1. [Sample CNF file](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/sample%20MySQl%20Cnf%20file.md)	
 	1. [Checklist](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/MYSQL%20Server%20Checklist.md)	
