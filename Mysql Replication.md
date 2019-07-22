@@ -39,7 +39,7 @@ log_bin = /var/log/mysql/mysql-bin.log
 
 * Restart the server once it is done 
 ```shell
-SUDO SERVICE MYSQL RESTART
+sudo service mysql restart
 ```
 
 ## Once the user is created, we need to do a few things: 
