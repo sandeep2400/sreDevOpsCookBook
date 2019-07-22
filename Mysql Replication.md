@@ -6,9 +6,11 @@
 ```shell
 server-id = 1
 ```
-* Ensure there's a bimary log defined
+* Ensure there's a bimary log defined. check for the remaining 2 other parameters. 
 ```shell
-log_bin = /var/log/mysql/mysql-bin.log
+log_bin                 = /var/log/mysql/mysql-bin.log
+expire_logs_days        = 10
+max_binlog_size         = 100M
 ```
 * Restart the server once its done 
 ```shell
