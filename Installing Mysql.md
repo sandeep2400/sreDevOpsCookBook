@@ -1,4 +1,4 @@
-#Setting up MYSQL
+# Setting up MYSQL
 We'll setup MySQL so our application can connect to it. We need the following:
 * A user
 * A database
