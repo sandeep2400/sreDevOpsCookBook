@@ -22,3 +22,4 @@ The cookbook assembles information
 	1. [Checklist](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/MYSQL%20Server%20Checklist.md)
 	1. [Mysql Replication](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/Mysql%20Replication.md)	
 	1. [Reset Mysql Root Password](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/Resetting%20MYSQL%20(ver%208.0)%20Root%20Password.md)	
+	1. [Mysql Backup DB to S3](https://github.com/sandeep2400/sreDevOpsCookBook/blob/master/MYSQL%20back-ups%20Db%20to%20S3.md)
