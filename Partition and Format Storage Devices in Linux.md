@@ -110,16 +110,19 @@ sudo lsblk -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT
 ```
 You should see something like this. The highlighted output indicate different methods you can use to refer to the new filesystem:
 
+```shell
 Output
 NAME   FSTYPE LABEL         UUID                                 MOUNTPOINT
 sda                                                              
 └─sda1 ext4   datapartition 4b313333-a7b5-48c1-a957-d77d637e4fda 
 vda                                                              
 └─vda1 ext4   DOROOT        050e1e34-39e6-4072-a03e-ae0bf90ba13a /
+```
+
 Mount the New Filesystem
 Now, we can mount the filesystem for use.
 
-The Filesystem Hierarchy Standard recommends using /mnt or a subdirectory under it for temporarily mounted filesystems. It makes no recommendations on where to mount more permanent storage, so you can choose whichever scheme you'd like. For this tutorial, we'll mount the drive under /mnt/data.
+The Filesystem Hierarchy Standard recommends using `/mnt` or a subdirectory under it for temporarily mounted filesystems. It makes no recommendations on where to mount more permanent storage, so you can choose whichever scheme you'd like. For this tutorial, we'll mount the drive under /mnt/data.
 
 Create the directory by typing:
 

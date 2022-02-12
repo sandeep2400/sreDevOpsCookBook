@@ -75,12 +75,14 @@ if [ -e ${SAVE_DIR}/${FILE_NAME} ]; then
         echo "Upload to AWS failed"
         exit 1
     fi
-
+    # Delete old bkups
+    echo "Deleting old bkups"
+    find /path/to/backup -name "*.sql*" -mtime +60 -exec /bin/rm {} \;
     # Exit with no error
     exit 0
 fi
 
-find /path/to/backup -name "*.sql*" -mtime +60 -exec /bin/rm {} \;
+
 
 # Exit with error if we reach this point
 echo "Backup file not created"
