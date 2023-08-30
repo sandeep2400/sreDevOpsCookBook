@@ -53,4 +53,5 @@ You will see o/p similar to
 ```shell
 mysqladmin -p -u root version
 ```
-
+## Purging Mysql and reinstalling
+[Link Here](https://medium.com/@alef.duarte/cant-connect-to-local-mysql-server-through-socket-var-run-mysqld-mysqld-sock-155d580f3a06)
