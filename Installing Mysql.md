@@ -4,6 +4,8 @@ We'll setup MySQL so our application can connect to it. We need the following:
 * A database
 * To ensure the new user can connect to MySQL
 
+## Read this for ubuntu 22.04: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04
+
 ## Install
 We'll first install MySQL, version 5.7, which comes out of the box on Ubuntu 16.04.
 ```shell
